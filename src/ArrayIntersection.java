@@ -9,11 +9,10 @@ public class ArrayIntersection {
         }
         return result.toArray();
     }
+
     private static boolean contains(int[] arr, int value) {
         for (int j : arr) {
-            if (j == value) {
-                return true;
-            }
+            if (j == value) return true;
         }
         return false;
     }

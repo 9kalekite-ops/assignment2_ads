@@ -1,12 +1,23 @@
-public class QueueListUsingIntList {
+public class QueueListUsingIntList implements IntQueue {
     private IntList list = new IntList();
-    public void enqueue(int value) {
+
+    @Override
+    public void add(int value) {
         list.add(value);
     }
-    public int dequeue() {
+
+    @Override
+    public int remove() {
         return list.removeFirst();
     }
-    public boolean isEmpty() {
+
+    @Override
+    public int peek() {
+        return list.peekFirst();
+    }
+
+    @Override
+    public boolean empty() {
         return list.isEmpty();
     }
 }

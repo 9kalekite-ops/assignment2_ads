@@ -1,38 +1,25 @@
-public class QueueList {
-    private static class Node {
-        int value;
-        Node next;
-        Node(int value) {
-            this.value = value;
-        }
+public class QueueList implements IntQueue {
+    private IntList list = new IntList();
+
+    @Override
+    public void add(int value) {
+        list.add(value);
     }
-    private Node front;
-    private Node rear;
-    public QueueList() {
-        front = null;
-        rear = null;
+
+    @Override
+    public int remove() {
+        if (list.isEmpty()) throw new RuntimeException("Queue is empty");
+        return list.removeFirst();
     }
-    public void enqueue(int value) {
-        Node newNode = new Node(value);
-        if (rear == null) {
-            front = rear = newNode;
-            return;
-        }
-        rear.next = newNode;
-        rear = newNode;
+
+    @Override
+    public int peek() {
+        if (list.isEmpty()) throw new RuntimeException("Queue is empty");
+        return list.peekFirst();
     }
-    public int dequeue() {
-        if (front == null) {
-            throw new RuntimeException("Queue is empty");
-        }
-        int value = front.value;
-        front = front.next;
-        if (front == null) {
-            rear = null;
-        }
-        return value;
-    }
-    public boolean isEmpty() {
-        return front == null;
+
+    @Override
+    public boolean empty() {
+        return list.isEmpty();
     }
 }
